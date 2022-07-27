@@ -36,13 +36,14 @@ namespace Almacen.Infraestructura.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
-        public async Task<Categoria> ObtenerById(int id)
+        public async Task<Categoria> ObtenerById(string id)
         {
             return await _context.Set<Categoria>().FindAsync(id);
         }
         public async Task<List<Categoria>> ObtenerByNombre (string filtroByName)
         {
-            return await _context.Set<Categoria>().Where(x => x.Nombre.Contains(filtroByName)).ToListAsync();
+            var data= await _context.Set<Categoria>().Where(x => x.Nombre.Contains(filtroByName)).ToListAsync();
+            return data;
         }
     }
 }

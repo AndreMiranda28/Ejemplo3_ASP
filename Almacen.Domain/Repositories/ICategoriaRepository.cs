@@ -13,8 +13,9 @@ namespace Almacen.Domain.Repositories
         Task<bool> Modificar(Categoria entitiy);
         Task<bool> Eliminar(int id);
 
-        Task<Categoria> ObtenerById(int entitiy);
-        //Task<List<Categoria> ObtenerByNombre(string entitiy);
+        Task<Categoria> ObtenerById(string entitiy);
+
+        Task<List<Categoria>> ObtenerByNombre(string entitiy);
 
 
 

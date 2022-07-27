@@ -18,7 +18,7 @@ namespace Almacen.Infrastructure
             this IServiceCollection services, string connectionStringDB
             )
         {
-            services.AddAppDbContext(connectionStringDB);
+            services.AddAppDbContext(connectionStringDB);                                          
             services.AddRepositories();
         }
 
@@ -36,6 +36,10 @@ namespace Almacen.Infrastructure
 
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IAlmacenRepository, AlmacenRepository>();
+            services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
+            services.AddScoped<IProductoRepository, ProductoRepository>();
+
+
 
 
         }

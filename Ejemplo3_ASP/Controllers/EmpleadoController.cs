@@ -1,4 +1,4 @@
-﻿using Almacen.Application.UserCases.CategoriaUseCase.AlmacenUseCase;
+﻿using Almacen.Application.UserCases.CategoriaUseCase.GuardarEmpleadoUseCase;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace Ejemplo3_ASP.Controllers
 {
- 
-    public class AlmacenController : WebApiControllerBase
+
+    public class EmpleadoController : WebApiControllerBase
     {
         private readonly IMediator _mediator;
-        public AlmacenController(IMediator mediator)
+        public EmpleadoController(IMediator mediator
+            )
         {
             _mediator = mediator;
         }
 
         /// <summary>
-        /// / HTTP POST api/Almacen/guardar
+        /// / HTTP POST api/Categoria/guardar
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        /// // FROMBODY SE USA CUANDO QUIERES PASAR UN OBJETO COMO PARAMETRO
         [HttpPost("guardar")]
-        public async Task<IActionResult> RealizarGuardar([FromBody] GuardarAlmacenRequest request)
+        public async Task<IActionResult> RealizarGuardar([FromBody] GuardarEmpleadoRequest request)
         {
             var resultado = await _mediator.Send(request);
             return GetResult(resultado);

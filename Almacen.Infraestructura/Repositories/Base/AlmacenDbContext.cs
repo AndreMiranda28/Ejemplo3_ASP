@@ -16,6 +16,9 @@ namespace Almacen.Infraestructura.Repositories.Base
         }
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Domain.Models.Almacen> Almacenes { get; set; }
+        public virtual DbSet<Empleado> Empleados { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

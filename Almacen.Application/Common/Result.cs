@@ -11,12 +11,14 @@ namespace Almacen.Application.Common
     {
         bool HasSucceeded { get; }
     }
-
     public interface IResult<T> : IResult
     {
         T Value { get; }
     }
-
+    public abstract class Result : IResult
+    {
+        public bool HasSucceeded { get; protected set; }
+    }
 
     public class SuccessResult : IResult
     {
@@ -35,6 +37,7 @@ namespace Almacen.Application.Common
 
         public bool HasSucceeded { get; }
     }
+
     public class FailureResult : IResult
     {
         public bool HasSucceeded { get; private set; }
@@ -42,30 +45,25 @@ namespace Almacen.Application.Common
 
     public class FailureResult<T> : IResult<T> where T : IEnumerable
     {
-        public FailureResult()
-        {
-            HasSucceeded = false;
-        }
+        public FailureResult() => HasSucceeded = false;
 
         public FailureResult(T errors)
         {
             Value = errors;
         }
-
         public bool HasSucceeded { get; private set; }
 
         public T Value { get; set; }
     }
+
     public class DetailError
     {
         public string ErrorCode { get; }
         public string Message { get; }
-
         public DetailError(string errorCode, string message)
         {
             ErrorCode = errorCode;
             Message = message;
         }
     }
-
 }
